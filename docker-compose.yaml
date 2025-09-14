@@ -1,0 +1,12 @@
+services:
+  ocabox:
+    network_mode: host
+    build:
+      context: ./
+      args:
+        OCABOX_ROUTER_PORT: ${OCABOX_ROUTER_PORT:-5559}
+    environment:
+      - OCABOX_ROUTER_PORT=${OCABOX_ROUTER_PORT:-5559}
+    stop_signal: SIGINT
+    volumes:
+      - './obsrv/communication/:/obsrv/communication/'
